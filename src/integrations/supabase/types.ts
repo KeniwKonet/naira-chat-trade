@@ -14,7 +14,234 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      bitcoin_rates: {
+        Row: {
+          created_at: string | null
+          id: string
+          rate: number
+        }
+        Insert: {
+          created_at?: string | null
+          id?: string
+          rate: number
+        }
+        Update: {
+          created_at?: string | null
+          id?: string
+          rate?: number
+        }
+        Relationships: []
+      }
+      bitcoin_trades: {
+        Row: {
+          admin_notes: string | null
+          btc_address: string
+          btc_amount: number
+          created_at: string | null
+          id: string
+          payout_amount: number
+          rate: number
+          status: string | null
+          tx_hash: string | null
+          updated_at: string | null
+          user_id: string
+        }
+        Insert: {
+          admin_notes?: string | null
+          btc_address: string
+          btc_amount: number
+          created_at?: string | null
+          id?: string
+          payout_amount: number
+          rate: number
+          status?: string | null
+          tx_hash?: string | null
+          updated_at?: string | null
+          user_id: string
+        }
+        Update: {
+          admin_notes?: string | null
+          btc_address?: string
+          btc_amount?: number
+          created_at?: string | null
+          id?: string
+          payout_amount?: number
+          rate?: number
+          status?: string | null
+          tx_hash?: string | null
+          updated_at?: string | null
+          user_id?: string
+        }
+        Relationships: []
+      }
+      gift_card_rates: {
+        Row: {
+          brand: string
+          country: string
+          created_at: string | null
+          id: string
+          is_active: boolean | null
+          rate: number
+          updated_at: string | null
+        }
+        Insert: {
+          brand: string
+          country: string
+          created_at?: string | null
+          id?: string
+          is_active?: boolean | null
+          rate: number
+          updated_at?: string | null
+        }
+        Update: {
+          brand?: string
+          country?: string
+          created_at?: string | null
+          id?: string
+          is_active?: boolean | null
+          rate?: number
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
+      gift_card_trades: {
+        Row: {
+          admin_notes: string | null
+          brand: string
+          card_value: number
+          country: string
+          created_at: string | null
+          id: string
+          image_url: string
+          payout_amount: number
+          rate: number
+          status: string | null
+          updated_at: string | null
+          user_id: string
+        }
+        Insert: {
+          admin_notes?: string | null
+          brand: string
+          card_value: number
+          country: string
+          created_at?: string | null
+          id?: string
+          image_url: string
+          payout_amount: number
+          rate: number
+          status?: string | null
+          updated_at?: string | null
+          user_id: string
+        }
+        Update: {
+          admin_notes?: string | null
+          brand?: string
+          card_value?: number
+          country?: string
+          created_at?: string | null
+          id?: string
+          image_url?: string
+          payout_amount?: number
+          rate?: number
+          status?: string | null
+          updated_at?: string | null
+          user_id?: string
+        }
+        Relationships: []
+      }
+      profiles: {
+        Row: {
+          avatar_url: string | null
+          created_at: string | null
+          full_name: string
+          id: string
+          kyc_document_url: string | null
+          kyc_status: string | null
+          phone: string | null
+          updated_at: string | null
+        }
+        Insert: {
+          avatar_url?: string | null
+          created_at?: string | null
+          full_name: string
+          id: string
+          kyc_document_url?: string | null
+          kyc_status?: string | null
+          phone?: string | null
+          updated_at?: string | null
+        }
+        Update: {
+          avatar_url?: string | null
+          created_at?: string | null
+          full_name?: string
+          id?: string
+          kyc_document_url?: string | null
+          kyc_status?: string | null
+          phone?: string | null
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
+      transactions: {
+        Row: {
+          amount: number
+          created_at: string | null
+          description: string | null
+          id: string
+          reference: string | null
+          status: string | null
+          type: string
+          user_id: string
+        }
+        Insert: {
+          amount: number
+          created_at?: string | null
+          description?: string | null
+          id?: string
+          reference?: string | null
+          status?: string | null
+          type: string
+          user_id: string
+        }
+        Update: {
+          amount?: number
+          created_at?: string | null
+          description?: string | null
+          id?: string
+          reference?: string | null
+          status?: string | null
+          type?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      wallets: {
+        Row: {
+          balance: number | null
+          created_at: string | null
+          currency: string | null
+          id: string
+          updated_at: string | null
+          user_id: string
+        }
+        Insert: {
+          balance?: number | null
+          created_at?: string | null
+          currency?: string | null
+          id?: string
+          updated_at?: string | null
+          user_id: string
+        }
+        Update: {
+          balance?: number | null
+          created_at?: string | null
+          currency?: string | null
+          id?: string
+          updated_at?: string | null
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
