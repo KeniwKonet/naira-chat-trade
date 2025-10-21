@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { Wallet, Menu } from "lucide-react";
 import { useState } from "react";
+import { ThemeToggle } from "./ThemeToggle";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -37,6 +38,7 @@ const Navbar = () => {
 
           {/* Auth Buttons */}
           <div className="hidden md:flex items-center space-x-4">
+            <ThemeToggle />
             <Link to="/auth">
               <Button variant="outline">Login</Button>
             </Link>

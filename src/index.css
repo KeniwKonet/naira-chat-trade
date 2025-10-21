@@ -8,14 +8,14 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    /* Fintech Color Palette */
-    --background: 0 0% 100%;
+    /* Neumorphic Color Palette */
+    --background: 225 20% 95%;
     --foreground: 222 47% 11%;
 
-    --card: 0 0% 100%;
+    --card: 225 20% 95%;
     --card-foreground: 222 47% 11%;
 
-    --popover: 0 0% 100%;
+    --popover: 225 20% 95%;
     --popover-foreground: 222 47% 11%;
 
     /* Primary - Deep Blue */
@@ -41,44 +41,49 @@ All colors MUST be HSL.
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --muted: 210 40% 96%;
+    --muted: 225 20% 90%;
     --muted-foreground: 215 16% 47%;
 
-    --border: 214 32% 91%;
-    --input: 214 32% 91%;
+    --border: 225 20% 85%;
+    --input: 225 20% 95%;
     --ring: 221 83% 53%;
 
-    --radius: 0.75rem;
+    --radius: 1rem;
 
+    /* Neumorphic Shadows */
+    --neu-shadow-light: -8px -8px 16px hsl(0 0% 100% / 0.8);
+    --neu-shadow-dark: 8px 8px 16px hsl(225 20% 70% / 0.4);
+    --neu-inset-light: inset -4px -4px 8px hsl(0 0% 100% / 0.8);
+    --neu-inset-dark: inset 4px 4px 8px hsl(225 20% 70% / 0.4);
+    
     /* Gradients */
     --gradient-primary: linear-gradient(135deg, hsl(221 83% 53%) 0%, hsl(267 84% 81%) 100%);
     --gradient-hero: linear-gradient(135deg, hsl(221 83% 40%) 0%, hsl(221 83% 53%) 50%, hsl(267 84% 81%) 100%);
-    --gradient-card: linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(210 40% 98%) 100%);
     
-    /* Shadows */
+    /* Standard Shadows for fallback */
     --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
     --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
     --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
     --shadow-glow: 0 0 20px hsl(221 83% 53% / 0.3);
 
-    --sidebar-background: 0 0% 98%;
+    --sidebar-background: 225 20% 93%;
     --sidebar-foreground: 240 5.3% 26.1%;
     --sidebar-primary: 240 5.9% 10%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-primary-foreground: 225 20% 98%;
+    --sidebar-accent: 225 20% 90%;
     --sidebar-accent-foreground: 240 5.9% 10%;
-    --sidebar-border: 220 13% 91%;
+    --sidebar-border: 225 20% 85%;
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
 
   .dark {
-    --background: 222 47% 11%;
+    --background: 225 20% 15%;
     --foreground: 210 40% 98%;
 
-    --card: 224 71% 4%;
+    --card: 225 20% 15%;
     --card-foreground: 210 40% 98%;
 
-    --popover: 224 71% 4%;
+    --popover: 225 20% 15%;
     --popover-foreground: 210 40% 98%;
 
     --primary: 221 83% 53%;
@@ -97,23 +102,29 @@ All colors MUST be HSL.
     --warning: 38 92% 50%;
     --warning-foreground: 0 0% 100%;
     
-    --destructive: 0 62% 30%;
+    --destructive: 0 62% 50%;
     --destructive-foreground: 210 40% 98%;
 
-    --muted: 217 33% 17%;
+    --muted: 225 20% 20%;
     --muted-foreground: 215 20% 65%;
 
-    --border: 217 33% 17%;
-    --input: 217 33% 17%;
+    --border: 225 20% 25%;
+    --input: 225 20% 15%;
     --ring: 221 83% 53%;
 
-    --sidebar-background: 240 5.9% 10%;
+    /* Dark Neumorphic Shadows */
+    --neu-shadow-light: -8px -8px 16px hsl(225 20% 20% / 0.6);
+    --neu-shadow-dark: 8px 8px 16px hsl(225 20% 5% / 0.8);
+    --neu-inset-light: inset -4px -4px 8px hsl(225 20% 20% / 0.6);
+    --neu-inset-dark: inset 4px 4px 8px hsl(225 20% 5% / 0.8);
+
+    --sidebar-background: 225 20% 12%;
     --sidebar-foreground: 240 4.8% 95.9%;
     --sidebar-primary: 224.3 76.3% 48%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent: 225 20% 18%;
     --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-border: 225 20% 20%;
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
 }
@@ -124,6 +135,29 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground transition-colors duration-300;
+  }
+}
+
+@layer utilities {
+  .neu {
+    box-shadow: var(--neu-shadow-light), var(--neu-shadow-dark);
+  }
+  
+  .neu-inset {
+    box-shadow: var(--neu-inset-light), var(--neu-inset-dark);
+  }
+  
+  .neu-hover {
+    transition: all 0.3s ease;
+  }
+  
+  .neu-hover:hover {
+    box-shadow: var(--neu-shadow-light), var(--neu-shadow-dark), 0 0 20px hsl(var(--primary) / 0.2);
+    transform: translateY(-2px);
+  }
+  
+  .neu-pressed {
+    box-shadow: var(--neu-inset-light), var(--neu-inset-dark);
   }
 }

@@ -92,12 +92,15 @@ const Dashboard = () => {
       
       <div className="container mx-auto px-4 pt-32 pb-20">
         <div className="flex justify-between items-center mb-8">
-          <h1 className="text-4xl font-bold">Dashboard</h1>
-          <Button onClick={handleLogout} variant="outline">Logout</Button>
+          <div>
+            <h1 className="text-4xl font-bold">Hi {user?.user_metadata?.full_name?.split(' ')[0] || 'there'} 👋</h1>
+            <p className="text-muted-foreground mt-2">Welcome back to your dashboard</p>
+          </div>
+          <Button onClick={handleLogout} variant="outline" className="neu">Logout</Button>
         </div>
 
         {/* Wallet Balance */}
-        <Card className="p-8 mb-8 bg-gradient-to-r from-primary to-secondary">
+        <Card className="p-8 mb-8 bg-gradient-to-r from-primary to-secondary neu">
           <div className="flex items-center gap-4 text-primary-foreground">
             <Wallet className="w-12 h-12" />
             <div>
@@ -109,9 +112,9 @@ const Dashboard = () => {
 
         {/* Quick Actions */}
         <div className="grid md:grid-cols-3 gap-6 mb-8">
-          <Card className="p-6 hover:shadow-lg transition-all cursor-pointer" onClick={() => navigate("/trade/giftcard")}>
+          <Card className="p-6 neu neu-hover cursor-pointer" onClick={() => navigate("/trade/giftcard")}>
             <div className="flex items-center gap-4">
-              <div className="w-12 h-12 rounded-full bg-accent/10 flex items-center justify-center">
+              <div className="w-12 h-12 rounded-full bg-accent/10 flex items-center justify-center neu">
                 <Gift className="w-6 h-6 text-accent" />
               </div>
               <div>
@@ -121,9 +124,9 @@ const Dashboard = () => {
             </div>
           </Card>
 
-          <Card className="p-6 hover:shadow-lg transition-all cursor-pointer" onClick={() => navigate("/trade/bitcoin")}>
+          <Card className="p-6 neu neu-hover cursor-pointer" onClick={() => navigate("/trade/bitcoin")}>
             <div className="flex items-center gap-4">
-              <div className="w-12 h-12 rounded-full bg-warning/10 flex items-center justify-center">
+              <div className="w-12 h-12 rounded-full bg-warning/10 flex items-center justify-center neu">
                 <Bitcoin className="w-6 h-6 text-warning" />
               </div>
               <div>
@@ -133,9 +136,9 @@ const Dashboard = () => {
             </div>
           </Card>
 
-          <Card className="p-6 hover:shadow-lg transition-all cursor-pointer" onClick={() => navigate("/wallet")}>
+          <Card className="p-6 neu neu-hover cursor-pointer" onClick={() => navigate("/wallet")}>
             <div className="flex items-center gap-4">
-              <div className="w-12 h-12 rounded-full bg-success/10 flex items-center justify-center">
+              <div className="w-12 h-12 rounded-full bg-success/10 flex items-center justify-center neu">
                 <Wallet className="w-6 h-6 text-success" />
               </div>
               <div>
@@ -147,7 +150,7 @@ const Dashboard = () => {
         </div>
 
         {/* Recent Trades */}
-        <Card className="p-6">
+        <Card className="p-6 neu">
           <h2 className="text-2xl font-bold mb-6">Recent Trades</h2>
           {recentTrades.length === 0 ? (
             <p className="text-muted-foreground text-center py-8">No trades yet. Start trading now!</p>

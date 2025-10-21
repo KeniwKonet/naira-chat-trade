@@ -14,6 +14,39 @@ export type Database = {
   }
   public: {
     Tables: {
+      bank_accounts: {
+        Row: {
+          account_name: string
+          account_number: string
+          bank_name: string
+          created_at: string | null
+          id: string
+          is_default: boolean | null
+          updated_at: string | null
+          user_id: string
+        }
+        Insert: {
+          account_name: string
+          account_number: string
+          bank_name: string
+          created_at?: string | null
+          id?: string
+          is_default?: boolean | null
+          updated_at?: string | null
+          user_id: string
+        }
+        Update: {
+          account_name?: string
+          account_number?: string
+          bank_name?: string
+          created_at?: string | null
+          id?: string
+          is_default?: boolean | null
+          updated_at?: string | null
+          user_id?: string
+        }
+        Relationships: []
+      }
       bitcoin_rates: {
         Row: {
           created_at: string | null
@@ -71,6 +104,42 @@ export type Database = {
           tx_hash?: string | null
           updated_at?: string | null
           user_id?: string
+        }
+        Relationships: []
+      }
+      contact_messages: {
+        Row: {
+          admin_response: string | null
+          created_at: string | null
+          email: string
+          id: string
+          message: string
+          name: string
+          status: string | null
+          updated_at: string | null
+          user_id: string | null
+        }
+        Insert: {
+          admin_response?: string | null
+          created_at?: string | null
+          email: string
+          id?: string
+          message: string
+          name: string
+          status?: string | null
+          updated_at?: string | null
+          user_id?: string | null
+        }
+        Update: {
+          admin_response?: string | null
+          created_at?: string | null
+          email?: string
+          id?: string
+          message?: string
+          name?: string
+          status?: string | null
+          updated_at?: string | null
+          user_id?: string | null
         }
         Relationships: []
       }
@@ -215,6 +284,27 @@ export type Database = {
         }
         Relationships: []
       }
+      user_roles: {
+        Row: {
+          created_at: string | null
+          id: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Insert: {
+          created_at?: string | null
+          id?: string
+          role?: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Update: {
+          created_at?: string | null
+          id?: string
+          role?: Database["public"]["Enums"]["app_role"]
+          user_id?: string
+        }
+        Relationships: []
+      }
       wallets: {
         Row: {
           balance: number | null
@@ -247,10 +337,16 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      has_role: {
+        Args: {
+          _role: Database["public"]["Enums"]["app_role"]
+          _user_id: string
+        }
+        Returns: boolean
+      }
     }
     Enums: {
-      [_ in never]: never
+      app_role: "admin" | "user"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -377,6 +473,8 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      app_role: ["admin", "user"],
+    },
   },
 } as const
