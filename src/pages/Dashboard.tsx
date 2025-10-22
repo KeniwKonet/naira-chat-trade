@@ -91,18 +91,18 @@ const Dashboard = () => {
       <Navbar />
       
       <div className="container mx-auto px-4 pt-32 pb-20">
-        <div className="flex justify-between items-center mb-8">
+        <div className="flex justify-between items-center mb-8 animate-fade-in">
           <div>
-            <h1 className="text-4xl font-bold">Hi {user?.user_metadata?.full_name?.split(' ')[0] || 'there'} 👋</h1>
+            <h1 className="text-4xl font-bold">Hi {user?.user_metadata?.full_name?.split(' ')[0] || 'Kenneth'} 👋</h1>
             <p className="text-muted-foreground mt-2">Welcome back to your dashboard</p>
           </div>
-          <Button onClick={handleLogout} variant="outline" className="neu">Logout</Button>
+          <Button onClick={handleLogout} variant="outline" className="neu neu-hover">Logout</Button>
         </div>
 
         {/* Wallet Balance */}
-        <Card className="p-8 mb-8 bg-gradient-to-r from-primary to-secondary neu">
-          <div className="flex items-center gap-4 text-primary-foreground">
-            <Wallet className="w-12 h-12" />
+        <Card className="p-8 mb-8 bg-gradient-to-r from-secondary to-primary neu animate-scale-in">
+          <div className="flex items-center gap-4 text-white">
+            <Wallet className="w-12 h-12 animate-bounce-subtle" />
             <div>
               <p className="text-lg opacity-90">Wallet Balance</p>
               <p className="text-4xl font-bold">₦{wallet?.balance?.toLocaleString() || "0.00"}</p>
@@ -112,7 +112,7 @@ const Dashboard = () => {
 
         {/* Quick Actions */}
         <div className="grid md:grid-cols-3 gap-6 mb-8">
-          <Card className="p-6 neu neu-hover cursor-pointer" onClick={() => navigate("/trade/giftcard")}>
+          <Card className="p-6 neu neu-hover cursor-pointer animate-fade-up" onClick={() => navigate("/trade/giftcard")}>
             <div className="flex items-center gap-4">
               <div className="w-12 h-12 rounded-full bg-accent/10 flex items-center justify-center neu">
                 <Gift className="w-6 h-6 text-accent" />
@@ -124,7 +124,7 @@ const Dashboard = () => {
             </div>
           </Card>
 
-          <Card className="p-6 neu neu-hover cursor-pointer" onClick={() => navigate("/trade/bitcoin")}>
+          <Card className="p-6 neu neu-hover cursor-pointer animate-fade-up" style={{ animationDelay: '0.1s' }} onClick={() => navigate("/trade/bitcoin")}>
             <div className="flex items-center gap-4">
               <div className="w-12 h-12 rounded-full bg-warning/10 flex items-center justify-center neu">
                 <Bitcoin className="w-6 h-6 text-warning" />
@@ -136,7 +136,7 @@ const Dashboard = () => {
             </div>
           </Card>
 
-          <Card className="p-6 neu neu-hover cursor-pointer" onClick={() => navigate("/wallet")}>
+          <Card className="p-6 neu neu-hover cursor-pointer animate-fade-up" style={{ animationDelay: '0.2s' }} onClick={() => navigate("/wallet")}>
             <div className="flex items-center gap-4">
               <div className="w-12 h-12 rounded-full bg-success/10 flex items-center justify-center neu">
                 <Wallet className="w-6 h-6 text-success" />
@@ -150,37 +150,15 @@ const Dashboard = () => {
         </div>
 
         {/* Recent Trades */}
-        <Card className="p-6 neu">
+        <Card className="p-6 neu animate-fade-up" style={{ animationDelay: '0.3s' }}>
           <h2 className="text-2xl font-bold mb-6">Recent Trades</h2>
           {recentTrades.length === 0 ? (
             <p className="text-muted-foreground text-center py-8">No trades yet. Start trading now!</p>
           ) : (
             <div className="space-y-4">
               {recentTrades.map((trade) => (
-                <div key={trade.id} className="flex items-center justify-between p-4 border rounded-lg">
-                  <div className="flex items-center gap-4">
-                    {"brand" in trade ? (
-                      <Gift className="w-6 h-6 text-accent" />
-                    ) : (
-                      <Bitcoin className="w-6 h-6 text-warning" />
-                    )}
-                    <div>
-                      <p className="font-semibold">
-                        {"brand" in trade ? `${trade.brand} Gift Card` : "Bitcoin Trade"}
-                      </p>
-                      <p className="text-sm text-muted-foreground">
-                        {new Date(trade.created_at).toLocaleDateString()}
-                      </p>
-                    </div>
-                  </div>
-                  <div className="text-right">
-                    <p className="font-bold">₦{trade.payout_amount?.toLocaleString()}</p>
-                    <div className="flex items-center gap-2 justify-end">
-                      {trade.status === "approved" && <CheckCircle className="w-4 h-4 text-success" />}
-                      {trade.status === "pending" && <Clock className="w-4 h-4 text-warning" />}
-                      <span className="text-sm capitalize">{trade.status}</span>
-                    </div>
-                  </div>
+                <div key={trade.id} className="flex items-center justify-between p-4 border rounded-lg neu-hover">
+...
                 </div>
               ))}
             </div>

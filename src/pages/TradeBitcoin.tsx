@@ -92,20 +92,20 @@ const TradeBitcoin = () => {
       <Navbar />
       
       <div className="container mx-auto px-4 pt-32 pb-20 max-w-2xl">
-        <h1 className="text-4xl font-bold mb-8 flex items-center gap-3">
-          <Bitcoin className="w-10 h-10" />
+        <h1 className="text-4xl font-bold mb-8 flex items-center gap-3 animate-fade-in">
+          <Bitcoin className="w-10 h-10 text-warning animate-bounce-subtle" />
           Trade Bitcoin
         </h1>
 
-        <Card className="p-8 mb-6 bg-warning/10">
+        <Card className="p-8 mb-6 bg-warning/10 neu animate-scale-in">
           <h3 className="font-semibold mb-2">Send BTC to this address:</h3>
-          <code className="block p-3 bg-background rounded text-sm break-all">{platformAddress}</code>
+          <code className="block p-3 bg-background rounded text-sm break-all neu-inset">{platformAddress}</code>
           <p className="text-sm text-muted-foreground mt-2">
             After submitting, send your Bitcoin to this address. We'll verify and credit your wallet.
           </p>
         </Card>
 
-        <Card className="p-8">
+        <Card className="p-8 neu animate-fade-up" style={{ animationDelay: '0.2s' }}>
           <form onSubmit={handleSubmit} className="space-y-6">
             <div>
               <Label>BTC Amount</Label>
@@ -130,19 +130,19 @@ const TradeBitcoin = () => {
             </div>
 
             {rate > 0 && (
-              <div className="p-4 bg-success/10 rounded-lg">
+              <div className="p-4 bg-success/10 rounded-lg neu-inset animate-fade-in">
                 <p className="text-sm text-muted-foreground">Current Rate</p>
                 <p className="text-2xl font-bold text-success">₦{rate.toLocaleString()} per BTC</p>
                 {payout > 0 && (
                   <>
                     <p className="text-sm text-muted-foreground mt-2">You will receive</p>
-                    <p className="text-3xl font-bold text-primary">₦{payout.toLocaleString()}</p>
+                    <p className="text-3xl font-bold text-secondary animate-pulse-glow">₦{payout.toLocaleString()}</p>
                   </>
                 )}
               </div>
             )}
 
-            <Button type="submit" className="w-full" disabled={loading || !btcAmount || !btcAddress}>
+            <Button type="submit" className="w-full bg-gradient-to-r from-warning to-accent hover:scale-105 transition-transform neu" disabled={loading || !btcAmount || !btcAddress}>
               {loading ? "Submitting..." : "Submit Trade"}
             </Button>
           </form>

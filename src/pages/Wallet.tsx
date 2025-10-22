@@ -82,11 +82,11 @@ const Wallet = () => {
       <Navbar />
       
       <div className="container mx-auto px-4 pt-32 pb-20 max-w-4xl">
-        <h1 className="text-4xl font-bold mb-8">My Wallet</h1>
+        <h1 className="text-4xl font-bold mb-8 animate-fade-in">My Wallet</h1>
 
-        <Card className="p-8 mb-8 bg-gradient-to-r from-primary to-secondary">
-          <div className="flex items-center gap-4 text-primary-foreground">
-            <WalletIcon className="w-12 h-12" />
+        <Card className="p-8 mb-8 bg-gradient-to-r from-secondary to-primary neu animate-scale-in">
+          <div className="flex items-center gap-4 text-white">
+            <WalletIcon className="w-12 h-12 animate-bounce-subtle" />
             <div>
               <p className="text-lg opacity-90">Available Balance</p>
               <p className="text-5xl font-bold">₦{wallet?.balance?.toLocaleString() || "0.00"}</p>
@@ -94,14 +94,14 @@ const Wallet = () => {
           </div>
         </Card>
 
-        <Tabs defaultValue="deposit" className="mb-8">
-          <TabsList className="grid w-full grid-cols-2">
+        <Tabs defaultValue="deposit" className="mb-8 animate-fade-up">
+          <TabsList className="grid w-full grid-cols-2 neu">
             <TabsTrigger value="deposit">Deposit</TabsTrigger>
             <TabsTrigger value="withdraw">Withdraw</TabsTrigger>
           </TabsList>
 
           <TabsContent value="deposit">
-            <Card className="p-6">
+            <Card className="p-6 neu">
               <div className="space-y-4">
                 <div>
                   <Label>Amount (₦)</Label>
@@ -113,7 +113,7 @@ const Wallet = () => {
                     min="100"
                   />
                 </div>
-                <Button onClick={handleDeposit} className="w-full">
+                <Button onClick={handleDeposit} className="w-full bg-gradient-to-r from-secondary to-primary hover:scale-105 transition-transform neu">
                   <ArrowDown className="w-4 h-4 mr-2" />
                   Deposit Funds
                 </Button>
@@ -125,7 +125,7 @@ const Wallet = () => {
           </TabsContent>
 
           <TabsContent value="withdraw">
-            <Card className="p-6">
+            <Card className="p-6 neu">
               <div className="space-y-4">
                 <div>
                   <Label>Amount (₦)</Label>
@@ -137,7 +137,7 @@ const Wallet = () => {
                     min="1000"
                   />
                 </div>
-                <Button onClick={handleWithdraw} className="w-full">
+                <Button onClick={handleWithdraw} className="w-full bg-gradient-to-r from-warning to-accent hover:scale-105 transition-transform neu">
                   <ArrowUp className="w-4 h-4 mr-2" />
                   Withdraw Funds
                 </Button>
@@ -149,14 +149,14 @@ const Wallet = () => {
           </TabsContent>
         </Tabs>
 
-        <Card className="p-6">
+        <Card className="p-6 neu animate-fade-up" style={{ animationDelay: '0.2s' }}>
           <h2 className="text-2xl font-bold mb-6">Transaction History</h2>
           {transactions.length === 0 ? (
             <p className="text-muted-foreground text-center py-8">No transactions yet</p>
           ) : (
             <div className="space-y-4">
               {transactions.map((tx) => (
-                <div key={tx.id} className="flex items-center justify-between p-4 border rounded-lg">
+                <div key={tx.id} className="flex items-center justify-between p-4 border rounded-lg neu-hover">
                   <div className="flex items-center gap-4">
                     {tx.type.includes("deposit") || tx.type.includes("credit") ? (
                       <ArrowDown className="w-6 h-6 text-success" />

@@ -123,9 +123,9 @@ const TradeGiftCard = () => {
       <Navbar />
       
       <div className="container mx-auto px-4 pt-32 pb-20 max-w-2xl">
-        <h1 className="text-4xl font-bold mb-8">Trade Gift Card</h1>
+        <h1 className="text-4xl font-bold mb-8 animate-fade-in">Trade Gift Card</h1>
 
-        <Card className="p-8">
+        <Card className="p-8 neu animate-scale-in">
           <form onSubmit={handleSubmit} className="space-y-6">
             <div>
               <Label>Gift Card Brand</Label>
@@ -168,13 +168,13 @@ const TradeGiftCard = () => {
             </div>
 
             {rate > 0 && (
-              <div className="p-4 bg-success/10 rounded-lg">
+              <div className="p-4 bg-success/10 rounded-lg neu-inset animate-fade-in">
                 <p className="text-sm text-muted-foreground">Current Rate</p>
                 <p className="text-2xl font-bold text-success">₦{rate} per $1</p>
                 {payout > 0 && (
                   <>
                     <p className="text-sm text-muted-foreground mt-2">You will receive</p>
-                    <p className="text-3xl font-bold text-primary">₦{payout.toLocaleString()}</p>
+                    <p className="text-3xl font-bold text-secondary animate-pulse-glow">₦{payout.toLocaleString()}</p>
                   </>
                 )}
               </div>
@@ -199,7 +199,7 @@ const TradeGiftCard = () => {
               </div>
             </div>
 
-            <Button type="submit" className="w-full" disabled={loading || !image || !brand || !country || !value}>
+            <Button type="submit" className="w-full bg-gradient-to-r from-secondary to-accent hover:scale-105 transition-transform neu" disabled={loading || !image || !brand || !country || !value}>
               {loading ? "Submitting..." : "Submit Trade"}
             </Button>
           </form>
