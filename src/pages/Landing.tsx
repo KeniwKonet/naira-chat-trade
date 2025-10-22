@@ -3,7 +3,7 @@ import { Card } from "@/components/ui/card";
 import { Link } from "react-router-dom";
 import { Gift, Bitcoin, Wallet, Shield, Zap, MessageCircle } from "lucide-react";
 import Navbar from "@/components/Navbar";
-import heroBg from "@/assets/hero-bg.jpg";
+import fintechHero from "@/assets/fintech-hero.jpg";
 
 const Landing = () => {
   return (
@@ -13,8 +13,8 @@ const Landing = () => {
       {/* Hero Section */}
       <section className="pt-32 pb-20 px-4 relative overflow-hidden">
         <div 
-          className="absolute inset-0 opacity-10"
-          style={{ backgroundImage: `url(${heroBg})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
+          className="absolute inset-0 opacity-20"
+          style={{ backgroundImage: `url(${fintechHero})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
         />
         <div className="container mx-auto relative z-10">
           <div className="max-w-4xl mx-auto text-center space-y-8">

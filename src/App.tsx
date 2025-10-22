@@ -15,6 +15,11 @@ import Contact from "./pages/Contact";
 import Settings from "./pages/Settings";
 import AdminDashboard from "./pages/admin/Dashboard";
 import ManageRates from "./pages/admin/ManageRates";
+import ManageTrades from "./pages/admin/ManageTrades";
+import ManageUsers from "./pages/admin/ManageUsers";
+import ManageMessages from "./pages/admin/ManageMessages";
+import Analytics from "./pages/admin/Analytics";
+import AdminSettings from "./pages/admin/AdminSettings";
 import NotFound from "./pages/NotFound";
 import Chatbot from "./components/Chatbot";
 
@@ -39,6 +44,11 @@ const App = () => (
             <Route path="/settings" element={<Settings />} />
             <Route path="/admin" element={<AdminDashboard />} />
             <Route path="/admin/rates" element={<ManageRates />} />
+            <Route path="/admin/trades" element={<ManageTrades />} />
+            <Route path="/admin/users" element={<ManageUsers />} />
+            <Route path="/admin/messages" element={<ManageMessages />} />
+            <Route path="/admin/analytics" element={<Analytics />} />
+            <Route path="/admin/settings" element={<AdminSettings />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
           <Chatbot />
