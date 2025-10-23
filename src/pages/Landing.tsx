@@ -1,179 +1,219 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { Link } from "react-router-dom";
-import { Gift, Bitcoin, Wallet, Shield, Zap, MessageCircle } from "lucide-react";
 import Navbar from "@/components/Navbar";
-import fintechHero from "@/assets/fintech-hero.jpg";
+import { Link } from "react-router-dom";
+import { ArrowRight, Shield, Zap, Clock, Gift, Bitcoin, TrendingUp, Sparkles, CheckCircle } from "lucide-react";
+import heroImage from "@/assets/hero-bg.jpg";
 
 const Landing = () => {
+  const features = [
+    { icon: Shield, title: "Secure Trading", description: "Bank-level security with end-to-end encryption" },
+    { icon: Zap, title: "Instant Processing", description: "Lightning-fast transaction confirmations in seconds" },
+    { icon: Clock, title: "24/7 Support", description: "Round-the-clock customer assistance & live chat" },
+    { icon: TrendingUp, title: "Best Rates", description: "Most competitive rates in the market" },
+  ];
+
+  const benefits = [
+    "Trade 50+ gift card brands",
+    "Convert BTC to Naira instantly",
+    "Zero hidden fees",
+    "Verified KYC in minutes",
+    "Direct bank transfers",
+    "Real-time rate updates"
+  ];
+
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
       
       {/* Hero Section */}
-      <section className="pt-32 pb-20 px-4 relative overflow-hidden">
-        <div 
-          className="absolute inset-0 opacity-20"
-          style={{ backgroundImage: `url(${fintechHero})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
-        />
+      <section className="relative pt-32 pb-20 px-4 overflow-hidden">
+        {/* Animated background elements */}
+        <div className="absolute inset-0 opacity-30">
+          <div className="absolute top-20 left-10 w-72 h-72 bg-primary/20 rounded-full blur-3xl animate-pulse-glow"></div>
+          <div className="absolute bottom-20 right-10 w-96 h-96 bg-secondary/20 rounded-full blur-3xl animate-pulse-glow" style={{ animationDelay: '1s' }}></div>
+        </div>
+        
         <div className="container mx-auto relative z-10">
-          <div className="max-w-4xl mx-auto text-center space-y-8">
-            <h1 className="text-5xl md:text-7xl font-bold bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent animate-fade-up">
-              Trade Gift Cards & Bitcoin for Naira
-            </h1>
-            <p className="text-xl text-muted-foreground animate-fade-up" style={{ animationDelay: '0.2s' }}>
-              Fast, secure, and reliable trading platform. Get instant Naira payments for your digital assets.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-up" style={{ animationDelay: '0.4s' }}>
-              <Link to="/auth">
-                <Button size="lg" className="bg-gradient-to-r from-secondary to-accent hover:scale-105 transition-transform text-lg px-8 neu">
-                  Start Trading Now
-                </Button>
-              </Link>
-              <Link to="/rates">
-                <Button size="lg" variant="outline" className="text-lg px-8 neu neu-hover">
-                  View Current Rates
-                </Button>
-              </Link>
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="animate-fade-up">
+              <div className="flex items-center gap-2 mb-4 animate-bounce-subtle">
+                <Sparkles className="w-6 h-6 text-accent" />
+                <span className="text-accent font-semibold">Trusted by 10,000+ Traders</span>
+              </div>
+              <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
+                Trade <span className="bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">Gift Cards</span> & <span className="bg-gradient-to-r from-accent to-primary bg-clip-text text-transparent">Bitcoin</span> Instantly
+              </h1>
+              <p className="text-xl md:text-2xl text-muted-foreground mb-8 leading-relaxed">
+                Nigeria's #1 platform for converting gift cards and Bitcoin to cash. Get the best rates, instant payments, and 24/7 support.
+              </p>
+              
+              {/* Benefits list */}
+              <div className="grid grid-cols-2 gap-3 mb-8">
+                {benefits.map((benefit, index) => (
+                  <div key={index} className="flex items-center gap-2 animate-fade-up" style={{ animationDelay: `${index * 0.1}s` }}>
+                    <CheckCircle className="w-5 h-5 text-success flex-shrink-0" />
+                    <span className="text-sm md:text-base">{benefit}</span>
+                  </div>
+                ))}
+              </div>
+
+              <div className="flex flex-wrap gap-4">
+                <Link to="/auth">
+                  <Button size="lg" className="bg-gradient-to-r from-primary via-secondary to-accent hover:scale-105 transition-all neu text-lg px-8 py-6 shadow-lg hover:shadow-2xl">
+                    Start Trading Now <ArrowRight className="ml-2 animate-bounce-subtle" />
+                  </Button>
+                </Link>
+                <Link to="/rates">
+                  <Button size="lg" variant="outline" className="neu neu-hover text-lg px-8 py-6">
+                    View Live Rates
+                  </Button>
+                </Link>
+              </div>
+
+              {/* Trust indicators */}
+              <div className="flex items-center gap-6 mt-8 text-sm text-muted-foreground">
+                <div className="flex items-center gap-2">
+                  <Shield className="w-5 h-5 text-primary" />
+                  <span>100% Secure</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Zap className="w-5 h-5 text-accent" />
+                  <span>Instant Payout</span>
+                </div>
+              </div>
+            </div>
+            
+            <div className="animate-scale-in relative">
+              <div className="absolute -inset-4 bg-gradient-to-r from-primary via-secondary to-accent rounded-2xl blur-2xl opacity-20 animate-pulse-glow"></div>
+              <img 
+                src={heroImage} 
+                alt="Crypto Trading Platform" 
+                className="rounded-2xl neu relative z-10 shadow-2xl"
+              />
             </div>
           </div>
         </div>
       </section>
 
-      {/* Current Rates Section */}
-      <section className="py-20 px-4 bg-muted/30">
+      {/* Features */}
+      <section className="py-20 px-4 bg-muted/30 relative">
         <div className="container mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 animate-fade-up">
-            Today's Rates
-          </h2>
-          <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
-            <Card className="p-6 text-center neu neu-hover animate-scale-in">
-              <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-r from-warning to-accent flex items-center justify-center neu animate-bounce-subtle">
-                <Bitcoin className="w-8 h-8 text-white" />
-              </div>
-              <h3 className="text-xl font-semibold mb-2">Bitcoin</h3>
-              <p className="text-3xl font-bold text-warning mb-2">₦45,200,000</p>
-              <p className="text-sm text-muted-foreground">per BTC</p>
-            </Card>
-            
-            <Card className="p-6 text-center neu neu-hover animate-scale-in" style={{ animationDelay: '0.1s' }}>
-              <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-r from-secondary to-primary flex items-center justify-center neu animate-bounce-subtle">
-                <Gift className="w-8 h-8 text-white" />
-              </div>
-              <h3 className="text-xl font-semibold mb-2">Amazon Card</h3>
-              <p className="text-3xl font-bold text-secondary mb-2">₦920</p>
-              <p className="text-sm text-muted-foreground">per $1</p>
-            </Card>
-            
-            <Card className="p-6 text-center neu neu-hover animate-scale-in" style={{ animationDelay: '0.2s' }}>
-              <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-r from-primary to-secondary flex items-center justify-center neu animate-bounce-subtle">
-                <Gift className="w-8 h-8 text-white" />
-              </div>
-              <h3 className="text-xl font-semibold mb-2">Steam Card</h3>
-              <p className="text-3xl font-bold text-primary mb-2">₦880</p>
-              <p className="text-sm text-muted-foreground">per $1</p>
-            </Card>
+          <div className="text-center mb-16 animate-fade-up">
+            <h2 className="text-4xl md:text-5xl font-bold mb-4">Why Traders Choose Us</h2>
+            <p className="text-xl text-muted-foreground">Experience the future of crypto trading</p>
+          </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {features.map((feature, index) => (
+              <Card key={index} className="p-8 neu neu-hover animate-fade-up bg-gradient-to-br from-card to-muted/20 border-0 group" style={{ animationDelay: `${index * 0.1}s` }}>
+                <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center mb-4 neu group-hover:scale-110 transition-transform">
+                  <feature.icon className="w-8 h-8 text-primary" />
+                </div>
+                <h3 className="text-xl font-bold mb-3 group-hover:text-primary transition-colors">{feature.title}</h3>
+                <p className="text-muted-foreground leading-relaxed">{feature.description}</p>
+              </Card>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Features Section */}
+      {/* CTA Sections */}
       <section className="py-20 px-4">
         <div className="container mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 animate-fade-up">
-            Why Choose Horja Smith Exchange?
-          </h2>
-          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            <div className="text-center space-y-4 animate-fade-up" style={{ animationDelay: '0.1s' }}>
-              <div className="w-16 h-16 mx-auto rounded-full bg-success/10 flex items-center justify-center neu">
-                <Zap className="w-8 h-8 text-success" />
+          <div className="grid md:grid-cols-2 gap-8">
+            <Card className="p-12 bg-gradient-to-br from-secondary via-success to-secondary/80 neu neu-hover animate-scale-in text-white relative overflow-hidden group">
+              <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+              <div className="relative z-10">
+                <div className="w-20 h-20 rounded-2xl bg-white/20 flex items-center justify-center mb-6 neu backdrop-blur-sm">
+                  <Gift className="w-10 h-10" />
+                </div>
+                <h3 className="text-4xl font-bold mb-4">Trade Gift Cards</h3>
+                <p className="mb-6 text-lg opacity-95 leading-relaxed">Convert your unused gift cards to cash instantly. Support for 50+ popular brands including Amazon, iTunes, Steam, and more.</p>
+                <ul className="space-y-2 mb-6">
+                  <li className="flex items-center gap-2">
+                    <CheckCircle className="w-5 h-5" />
+                    <span>Instant verification</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle className="w-5 h-5" />
+                    <span>Best market rates</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle className="w-5 h-5" />
+                    <span>Same-day payout</span>
+                  </li>
+                </ul>
+                <Link to="/trade/giftcard">
+                  <Button size="lg" className="bg-white text-secondary hover:scale-105 transition-all shadow-lg">
+                    Trade Gift Cards <ArrowRight className="ml-2" />
+                  </Button>
+                </Link>
               </div>
-              <h3 className="text-xl font-semibold">Instant Payments</h3>
-              <p className="text-muted-foreground">
-                Get your Naira instantly credited to your wallet after trade verification
-              </p>
-            </div>
-            
-            <div className="text-center space-y-4 animate-fade-up" style={{ animationDelay: '0.2s' }}>
-              <div className="w-16 h-16 mx-auto rounded-full bg-primary/10 flex items-center justify-center neu">
-                <Shield className="w-8 h-8 text-primary" />
+            </Card>
+
+            <Card className="p-12 bg-gradient-to-br from-accent via-warning to-accent/80 neu neu-hover animate-scale-in text-white relative overflow-hidden group" style={{ animationDelay: '0.2s' }}>
+              <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+              <div className="relative z-10">
+                <div className="w-20 h-20 rounded-2xl bg-white/20 flex items-center justify-center mb-6 neu backdrop-blur-sm">
+                  <Bitcoin className="w-10 h-10" />
+                </div>
+                <h3 className="text-4xl font-bold mb-4">Trade Bitcoin</h3>
+                <p className="mb-6 text-lg opacity-95 leading-relaxed">Sell your Bitcoin for Naira at the best rates. Fast, secure, and reliable with instant bank transfers.</p>
+                <ul className="space-y-2 mb-6">
+                  <li className="flex items-center gap-2">
+                    <CheckCircle className="w-5 h-5" />
+                    <span>Competitive rates</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle className="w-5 h-5" />
+                    <span>Secure transactions</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle className="w-5 h-5" />
+                    <span>Instant settlement</span>
+                  </li>
+                </ul>
+                <Link to="/trade/bitcoin">
+                  <Button size="lg" className="bg-white text-accent hover:scale-105 transition-all shadow-lg">
+                    Trade Bitcoin <ArrowRight className="ml-2" />
+                  </Button>
+                </Link>
               </div>
-              <h3 className="text-xl font-semibold">Secure Trading</h3>
-              <p className="text-muted-foreground">
-                KYC verification and encrypted transactions ensure your safety
-              </p>
-            </div>
-            
-            <div className="text-center space-y-4 animate-fade-up" style={{ animationDelay: '0.3s' }}>
-              <div className="w-16 h-16 mx-auto rounded-full bg-accent/10 flex items-center justify-center neu">
-                <MessageCircle className="w-8 h-8 text-accent" />
-              </div>
-              <h3 className="text-xl font-semibold">24/7 Support</h3>
-              <p className="text-muted-foreground">
-                AI chatbot and live support always available to help you
-              </p>
-            </div>
-            
-            <div className="text-center space-y-4 animate-fade-up" style={{ animationDelay: '0.4s' }}>
-              <div className="w-16 h-16 mx-auto rounded-full bg-secondary/10 flex items-center justify-center neu">
-                <Wallet className="w-8 h-8 text-secondary" />
-              </div>
-              <h3 className="text-xl font-semibold">Naira Wallet</h3>
-              <p className="text-muted-foreground">
-                Manage your funds easily with deposits and withdrawals
-              </p>
-            </div>
-            
-            <div className="text-center space-y-4 animate-fade-up" style={{ animationDelay: '0.5s' }}>
-              <div className="w-16 h-16 mx-auto rounded-full bg-warning/10 flex items-center justify-center neu">
-                <Gift className="w-8 h-8 text-warning" />
-              </div>
-              <h3 className="text-xl font-semibold">Multiple Gift Cards</h3>
-              <p className="text-muted-foreground">
-                Trade Amazon, Steam, Apple, iTunes, and many more
-              </p>
-            </div>
-            
-            <div className="text-center space-y-4 animate-fade-up" style={{ animationDelay: '0.6s' }}>
-              <div className="w-16 h-16 mx-auto rounded-full bg-accent/10 flex items-center justify-center neu">
-                <Bitcoin className="w-8 h-8 text-accent" />
-              </div>
-              <h3 className="text-xl font-semibold">Bitcoin Trading</h3>
-              <p className="text-muted-foreground">
-                Sell BTC at competitive rates with automatic confirmation
-              </p>
-            </div>
+            </Card>
           </div>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-20 px-4 bg-gradient-to-r from-secondary via-primary to-accent relative overflow-hidden">
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-10 left-10 w-32 h-32 bg-white rounded-full blur-3xl animate-pulse-glow"></div>
-          <div className="absolute bottom-10 right-10 w-40 h-40 bg-white rounded-full blur-3xl animate-pulse-glow" style={{ animationDelay: '1s' }}></div>
+      {/* Final CTA */}
+      <section className="py-32 px-4 bg-gradient-to-br from-primary via-secondary to-accent text-white relative overflow-hidden">
+        <div className="absolute inset-0 opacity-20">
+          <div className="absolute top-0 left-0 w-96 h-96 bg-white rounded-full blur-3xl animate-pulse-glow"></div>
+          <div className="absolute bottom-0 right-0 w-96 h-96 bg-white rounded-full blur-3xl animate-pulse-glow" style={{ animationDelay: '1s' }}></div>
         </div>
-        <div className="container mx-auto text-center space-y-6 relative z-10">
-          <h2 className="text-3xl md:text-5xl font-bold text-white animate-fade-up">
-            Ready to Start Trading?
-          </h2>
-          <p className="text-xl text-white/90 max-w-2xl mx-auto animate-fade-up" style={{ animationDelay: '0.2s' }}>
-            Join thousands of satisfied traders. Create your free account and start trading today.
-          </p>
-          <Link to="/auth">
-            <Button size="lg" className="text-lg px-8 bg-white text-primary hover:scale-105 transition-transform neu animate-fade-up" style={{ animationDelay: '0.4s' }}>
-              Create Free Account
-            </Button>
-          </Link>
+        <div className="container mx-auto text-center relative z-10">
+          <div className="max-w-3xl mx-auto animate-fade-up">
+            <Sparkles className="w-16 h-16 mx-auto mb-6 animate-bounce-subtle" />
+            <h2 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">Ready to Start Trading?</h2>
+            <p className="text-2xl mb-12 opacity-95 leading-relaxed">Join 10,000+ satisfied traders and experience the fastest way to convert your assets to cash</p>
+            <Link to="/auth">
+              <Button size="lg" className="bg-white text-primary hover:scale-110 transition-all text-xl px-12 py-7 shadow-2xl hover:shadow-white/50 neu">
+                Create Free Account <ArrowRight className="ml-3 animate-bounce-subtle" />
+              </Button>
+            </Link>
+            <p className="mt-6 text-sm opacity-75">No credit card required • Free forever • Start trading in minutes</p>
+          </div>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="py-12 px-4 bg-muted/30">
-        <div className="container mx-auto text-center">
-          <p className="text-muted-foreground">
-            © 2025 Horja Smith Exchange. All rights reserved.
-          </p>
+      <footer className="py-12 px-4 bg-muted/30 border-t border-border">
+        <div className="container mx-auto text-center text-muted-foreground">
+          <p>&copy; 2024 CryptoTrade. All rights reserved. Built with ❤️ in Nigeria</p>
+          <div className="flex justify-center gap-6 mt-4">
+            <Link to="/rates" className="hover:text-primary transition-colors">Rates</Link>
+            <Link to="/contact" className="hover:text-primary transition-colors">Contact</Link>
+            <Link to="/auth" className="hover:text-primary transition-colors">Sign In</Link>
+          </div>
         </div>
       </footer>
     </div>
