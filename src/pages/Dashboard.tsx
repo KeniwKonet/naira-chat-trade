@@ -93,7 +93,7 @@ const Dashboard = () => {
       <div className="container mx-auto px-4 pt-32 pb-20">
         <div className="flex justify-between items-center mb-8 animate-fade-in">
           <div>
-            <h1 className="text-4xl font-bold">Hi {user?.user_metadata?.full_name?.split(' ')[0] || 'Kenneth'} 👋</h1>
+            <h1 className="text-4xl font-bold">Hi {user?.user_metadata?.full_name?.split(' ')[0] || user?.email?.split('@')[0] || 'there'} 👋</h1>
             <p className="text-muted-foreground mt-2">Welcome back to your dashboard</p>
           </div>
           <Button onClick={handleLogout} variant="outline" className="neu neu-hover">Logout</Button>

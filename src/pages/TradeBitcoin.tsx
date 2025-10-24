@@ -76,6 +76,17 @@ const TradeBitcoin = () => {
 
       if (error) throw error;
 
+      // Create transaction record
+      await supabase
+        .from("transactions")
+        .insert({
+          user_id: user.id,
+          type: "bitcoin_trade",
+          amount: payout,
+          status: "pending",
+          description: `Bitcoin Trade - ${btcAmount} BTC`
+        });
+
       toast({ title: "Success", description: "Bitcoin trade submitted! Send BTC to the provided address." });
       navigate("/dashboard");
     } catch (error: any) {

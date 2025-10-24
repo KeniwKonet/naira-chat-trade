@@ -38,7 +38,7 @@ const Navbar = () => {
         <div className="flex items-center justify-between h-20">
           <Link to="/" className="text-2xl font-bold bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent flex items-center gap-2 hover:scale-105 transition-transform">
             <Wallet className="w-8 h-8 text-primary" />
-            CryptoTrade
+            Horja Smith Exchange
           </Link>
 
           {/* Desktop Menu */}

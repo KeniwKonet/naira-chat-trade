@@ -109,6 +109,17 @@ const TradeGiftCard = () => {
 
       if (tradeError) throw tradeError;
 
+      // Create transaction record
+      await supabase
+        .from("transactions")
+        .insert({
+          user_id: user.id,
+          type: "gift_card_trade",
+          amount: payout,
+          status: "pending",
+          description: `${brand} ${country} Gift Card - $${value}`
+        });
+
       toast({ title: "Success", description: "Trade submitted successfully! Awaiting verification." });
       navigate("/dashboard");
     } catch (error: any) {

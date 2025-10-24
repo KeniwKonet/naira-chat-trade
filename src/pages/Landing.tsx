@@ -42,8 +42,11 @@ const Landing = () => {
                 <span className="text-accent font-semibold">Trusted by 10,000+ Traders</span>
               </div>
               <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
-                Trade <span className="bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">Gift Cards</span> & <span className="bg-gradient-to-r from-accent to-primary bg-clip-text text-transparent">Bitcoin</span> Instantly
+                Welcome to <span className="bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">Horja Smith Exchange</span>
               </h1>
+              <h2 className="text-3xl md:text-4xl font-semibold mb-6 text-muted-foreground">
+                Trade <span className="text-secondary">Gift Cards</span> & <span className="text-accent">Bitcoin</span> Instantly
+              </h2>
               <p className="text-xl md:text-2xl text-muted-foreground mb-8 leading-relaxed">
                 Nigeria's #1 platform for converting gift cards and Bitcoin to cash. Get the best rates, instant payments, and 24/7 support.
               </p>
@@ -208,7 +211,7 @@ const Landing = () => {
       {/* Footer */}
       <footer className="py-12 px-4 bg-muted/30 border-t border-border">
         <div className="container mx-auto text-center text-muted-foreground">
-          <p>&copy; 2024 CryptoTrade. All rights reserved. Built with ❤️ in Nigeria</p>
+          <p>&copy; 2024 Horja Smith Exchange. All rights reserved. Built with ❤️ in Nigeria</p>
           <div className="flex justify-center gap-6 mt-4">
             <Link to="/rates" className="hover:text-primary transition-colors">Rates</Link>
             <Link to="/contact" className="hover:text-primary transition-colors">Contact</Link>
